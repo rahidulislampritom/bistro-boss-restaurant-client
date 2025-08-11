@@ -1,10 +1,13 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import { FaCartShopping } from "react-icons/fa6";
+import useCart from "../../Hooks/useCart";
 
 const Navbar = () => {
 
     const { user, logOut } = useAuth();
     const navigate = useNavigate();
+    const [cartData] = useCart();
 
     const handleLogout = () => {
 
@@ -25,6 +28,11 @@ const Navbar = () => {
             <li><NavLink to={'/'}>HOME</NavLink></li>
             <li><NavLink to={'/menu'}>OUR MENU</NavLink></li>
             <li><NavLink to={`/order/salad`}>ORDER FOOD</NavLink></li>
+            <li><NavLink to={`/`}>
+                <button className="btn">
+                    <FaCartShopping size={24} /> <div className="badge badge-sm badge-secondary">+{cartData.length}</div>
+                </button>
+            </NavLink></li>
 
         </>
 
@@ -57,7 +65,7 @@ const Navbar = () => {
                     <a className="btn btn-ghost text-xl">Bistro Boss</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal px-1 items-center">
                         {navOptions}
                     </ul>
                 </div>
