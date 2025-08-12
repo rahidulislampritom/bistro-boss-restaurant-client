@@ -28,7 +28,7 @@ const Navbar = () => {
             <li><NavLink to={'/'}>HOME</NavLink></li>
             <li><NavLink to={'/menu'}>OUR MENU</NavLink></li>
             <li><NavLink to={`/order/salad`}>ORDER FOOD</NavLink></li>
-            <li><NavLink to={`/`}>
+            <li><NavLink to={`/dashboard`}>
                 <button className="btn">
                     <FaCartShopping size={24} /> <div className="badge badge-sm badge-secondary">+{cartData.length}</div>
                 </button>
