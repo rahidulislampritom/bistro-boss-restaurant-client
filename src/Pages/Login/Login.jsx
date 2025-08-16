@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import { toast } from 'react-toastify';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 
 
@@ -15,29 +16,29 @@ const Login = () => {
 
     const from = location?.state?.from?.pathname || '/';
 
-    console.log(location.state)
+    // console.log(location.state)
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
         const formData = e.target;
         const email = formData.email.value;
         const password = formData.password.value;
-        const loginData = {
-            email,
-            password
-        }
-        console.log(loginData)
+        // const loginData = {
+        //     email,
+        //     password
+        // }
+        // console.log(loginData)
 
         // auth login start
         login(email, password)
-            .then(result => {
-                console.log(result.user);
+            .then(() => {
+                // console.log(result.user);
                 toast.success('Login Successful!')
                 navigate(from, { replace: true });
 
             })
-            .catch((err) => {
-                console.log(err.message);
+            .catch(() => {
+                // console.log(err.message);
                 toast.error("Login failed! Check your credentials.");
             });
 
@@ -111,6 +112,7 @@ const Login = () => {
 
                                 </fieldset>
                             </form>
+                            <SocialLogin></SocialLogin>
                         </div>
                         <h2 className="text-center">Don’t have an account? <span className="text-amber-700 font-medium"><Link>Sign Up</Link></span></h2>
                     </div>

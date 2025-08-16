@@ -7,7 +7,7 @@ import { PiListStarBold } from "react-icons/pi";
 import { SiFacebookgaming } from "react-icons/si";
 import { MdOutlineMenu } from "react-icons/md";
 import { FaBasketShopping } from "react-icons/fa6";
-
+import './dashboard.css'
 const Dashboard = () => {
     return (
         <div className="flex ">
@@ -31,7 +31,7 @@ const Dashboard = () => {
                 <div className="pl-6">
 
                     <ul className="uppercase space-y-6 font-medium">
-                        <li> <NavLink className="flex items-center gap-3"><RiHome9Fill size={24} /> Home</NavLink> </li>
+                        <li> <NavLink to={'/'} className="flex items-center gap-3"><RiHome9Fill size={24} /> Home</NavLink> </li>
                         <li> <NavLink className="flex items-center gap-3"><MdOutlineMenu size={24} /> Menu</NavLink> </li>
                         <li> <NavLink className="flex items-center gap-3"><FaBasketShopping size={24} /> SHOP</NavLink> </li>
                         <li> <NavLink className="flex items-center gap-3"><RiMessageFill size={24} /> Contact</NavLink> </li>
@@ -39,7 +39,7 @@ const Dashboard = () => {
                 </div>
             </section>
             {/* outLate  */}
-            <section className="mx-auto">
+            <section className="w-full">
                 <Outlet></Outlet>
             </section>
         </div>

@@ -1,11 +1,14 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
 
     const { createUser, profileUpdate } = useAuth();
     const navigate = useNavigate();
+    const axiosPublicUsers = useAxiosPublic();
 
 
     const regex = /(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])[A-Za-z\d\W_]{6}/;
@@ -14,9 +17,9 @@ const SignUp = () => {
     const onSubmit = data => {
         console.log(data);
         createUser(data.email, data.password)
-            .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
+            .then(() => {
+                // const loggedUser = result.user;
+                // console.log(loggedUser);
 
                 // update profile start
                 const profile = {
@@ -33,11 +36,21 @@ const SignUp = () => {
                         console.log('profile update error', err.message);
                     });
                 // update profile end
+                const userInfo = {
+                    name: data.name,
+                    email: data.email
+                }
+
+                axiosPublicUsers.post(`/users`, userInfo)
+                    .then(() => {
+
+                        // console.log(res.data)
+                    })
 
 
             })
-            .catch(err => {
-                console.log('signup error', err.message)
+            .catch(() => {
+                // console.log('signup error', err.message)
             })
 
     };
@@ -91,7 +104,9 @@ const SignUp = () => {
                                     <input className="btn btn-neutral " type="submit" value="Sign up" />
                                 </fieldset>
                             </form>
+                            <SocialLogin></SocialLogin>
                         </div>
+                        
                         <h2 className="text-center">Have an account? <span className="text-amber-700 font-medium"><Link>Login</Link></span></h2>
                     </div>
                 </div>
