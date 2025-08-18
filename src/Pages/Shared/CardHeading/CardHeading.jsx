@@ -4,7 +4,7 @@ const CardHeading = ({ title, heading }) => {
 
             <h5 className="text-lg italic text-[#D1A054]">---{title}---</h5>
             <div className="border w-[400px] mx-auto text-[#e8e8e8]"></div>
-            <h2 className="text-4xl">{heading}</h2>
+            <h2 className="text-4xl uppercase">{heading}</h2>
             <div className="border w-[400px] mx-auto text-[#e8e8e8]"></div>
 
         </div>

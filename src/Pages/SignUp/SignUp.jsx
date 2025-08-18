@@ -17,9 +17,9 @@ const SignUp = () => {
     const onSubmit = data => {
         console.log(data);
         createUser(data.email, data.password)
-            .then(() => {
-                // const loggedUser = result.user;
-                // console.log(loggedUser);
+            .then((result) => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
 
                 // update profile start
                 const profile = {
@@ -49,8 +49,8 @@ const SignUp = () => {
 
 
             })
-            .catch(() => {
-                // console.log('signup error', err.message)
+            .catch((err) => {
+                console.log('signup error', err.message)
             })
 
     };
