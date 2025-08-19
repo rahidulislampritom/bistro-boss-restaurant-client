@@ -39,10 +39,10 @@ const Dashboard = () => {
                                 <ul className="uppercase mt-14 space-y-6 font-medium">
                                     <li> <NavLink to={'/dashboard/userHome'} className="flex items-center gap-3" > <RiHome9Fill size={24} />  User Home</NavLink> </li>
                                     <li> <NavLink to={'/dashboard/reservation'} className="flex items-center gap-3"><FaCalendarAlt size={24} /> Reservation</NavLink> </li>
-                                    <li> <NavLink className="flex items-center gap-3"><MdPayment size={24} />Payment History</NavLink> </li>
+                                    <li> <NavLink to={'paymentHistory'} className="flex items-center gap-3"><MdPayment size={24} />Payment History</NavLink> </li>
                                     <li> <NavLink to={'/dashboard/cart'} className="flex items-center gap-3"><IoCart size={24} /> My Cart</NavLink> </li>
-                                    <li> <NavLink className="flex items-center gap-3"><PiListStarBold size={24} /> Add Review</NavLink> </li>
-                                    <li> <NavLink className="flex items-center gap-3"><SiFacebookgaming size={24} /> My Booking</NavLink> </li>
+                                    <li> <NavLink to={'addReview'} className="flex items-center gap-3"><PiListStarBold size={24} /> Add Review</NavLink> </li>
+                                    <li> <NavLink to={'myBooking'} className="flex items-center gap-3"><SiFacebookgaming size={24} /> My Booking</NavLink> </li>
                                 </ul>
                             </>
                     }
@@ -53,7 +53,7 @@ const Dashboard = () => {
                     <ul className="uppercase space-y-6 font-medium">
                         <li> <NavLink to={'/'} className="flex items-center gap-3"><RiHome9Fill size={24} /> Home</NavLink> </li>
                         <li> <NavLink to={'/order/salad'} className="flex items-center gap-3"><MdOutlineMenu size={24} /> Menu</NavLink> </li>
-                        <li> <NavLink className="flex items-center gap-3"><FaBasketShopping size={24} /> SHOP</NavLink> </li>
+                        <li> <NavLink to={'shop'} className="flex items-center gap-3"><FaBasketShopping size={24} /> SHOP</NavLink> </li>
                         <li> <NavLink to={'/order/contact'} className="flex items-center gap-3"><RiMessageFill size={24} /> Contact</NavLink> </li>
                     </ul>
                 </div>

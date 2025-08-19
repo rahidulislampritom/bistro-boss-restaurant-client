@@ -4,6 +4,7 @@ import useCart from "../../../Hooks/useCart";
 import CardHeading from "../../Shared/CardHeading/CardHeading";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const [cart, refetch] = useCart();
@@ -47,7 +48,14 @@ const Cart = () => {
             <div className="flex justify-around">
                 <h2 className="text-4xl">Items:{cart.length}</h2>
                 <h2 className="text-4xl">Total Price:{totalPrice}</h2>
-                <button className="btn btn-primary">Pay</button>
+                {cart.length
+                    ?
+                    <Link to={'/dashboard/payment'}>
+                        <button className="btn btn-primary">Pay</button>
+                    </Link>
+                    :
+                    <button disabled className="btn btn-primary">Pay</button>}
+
             </div>
             <div className="ml-28 mt-10">
                 <div className="overflow-x-auto">

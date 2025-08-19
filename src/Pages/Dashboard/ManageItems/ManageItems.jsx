@@ -2,11 +2,41 @@ import { FaEdit } from "react-icons/fa";
 import useMenu from "../../../Hooks/useMenu";
 import CardHeading from "../../Shared/CardHeading/CardHeading";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
-    const [menuData] = useMenu();
+    const [menuData, , refetch] = useMenu();
+    const axiosDeleteSecure = useAxiosSecure();
+
+
     const handleDelete = (data) => {
-        console.log(data)
+        // console.log(data)
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const resDelete = await axiosDeleteSecure.delete(`/menu/${data._id}`);
+                if (resDelete.data.deletedCount > 0) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                    refetch()
+                }
+
+            }
+        });
+
     }
     return (
         <div>
@@ -58,9 +88,9 @@ const ManageItems = () => {
                                         </td>
                                         <td>{data.price}</td>
                                         <th>
-                                            <button className="btn bg-[#d1a05b] text-white">
+                                            <Link to={`/dashboard/updateItem/${data._id}`} className="btn bg-[#d1a05b] text-white">
                                                 <FaEdit size={24} />
-                                            </button>
+                                            </Link>
                                         </th>
                                         <th>
                                             <button onClick={() => handleDelete(data)} className="btn bg-[#b91c1c] text-white">
